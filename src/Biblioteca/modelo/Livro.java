@@ -1,30 +1,34 @@
 package Biblioteca.modelo;
 
-public abstract class Livro implements Emprestavel {
+public abstract class Livro {
     protected final String titulo;
     protected String autor;
     private String anoPublicacao;
-    protected static final double taxaReserva = 1.00;
+    protected Genero genero;
+    protected static final double TAXA_RESERVA = 1.00;
     private static int quantidadeLivros = 0;
 
-    public Livro(String titulo, String autor, String anoPublicacao) {
+    public Livro(String titulo, String autor, String anoPublicacao, Genero genero) {
         this.titulo = titulo;
         this.autor = autor;
         this.anoPublicacao = anoPublicacao;
+        this.genero = genero;
         quantidadeLivros++;
     }
 
-    public abstract int livrosEmprestados();
+    public abstract double totalReserva();
+
+    public abstract boolean estaDisponivel();
 
     @Override
     public String toString() {
-        return "Livros disponisveis : " + titulo + '\n' +
-                "Livro autor : " + autor + '\n' +
-                "Livro ano publicação : " + '\n' +
-                "Livros TaxaRerserva : " + taxaReserva + '\n' +
-                "Livros Usados : " + quantidadeLivros +
-                "Livros Emprestados : " + livrosEmprestados();
-
+        return "Livro : " + titulo + '\n' +
+                "Autor : " + autor + '\n' +
+                "Ano publicação : " + anoPublicacao + '\n' +
+                "Gênero : " + genero + '\n' +
+                "Taxa de reserva : " + TAXA_RESERVA + '\n' +
+                "Disponível : " + estaDisponivel() + '\n' +
+                "Total de livros cadastrados : " + quantidadeLivros;
     }
 
     public static int getQuantidadeLivros() {
@@ -49,5 +53,9 @@ public abstract class Livro implements Emprestavel {
 
     public void setAnoPublicacao(String anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
+    }
+
+    public Genero getGenero() {
+        return genero;
     }
 }

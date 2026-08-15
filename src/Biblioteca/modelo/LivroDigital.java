@@ -1,17 +1,25 @@
 package Biblioteca.modelo;
 
-public class LivroDigital  extends Livro {
+public class LivroDigital extends Livro {
 
-    public LivroDigital(String titulo, String autor, String anoPublicacao) {
-        super(titulo, autor, anoPublicacao);
+    private String linkAcesso;
+
+    public LivroDigital(String titulo, String autor, String anoPublicacao, Genero genero, String linkAcesso) {
+        super(titulo, autor, anoPublicacao, genero);
+        this.linkAcesso = linkAcesso;
     }
 
     @Override
-    public int livrosEmprestados() {
-        return livrosEmprestados();
+    public double totalReserva() {
+        return TAXA_RESERVA;
     }
 
-    public void linkAcesso(){
-        System.out.println("www.seulivroAqui");
+    @Override
+    public boolean estaDisponivel() {
+        return true;
+    }
+
+    public String getLinkAcesso() {
+        return linkAcesso;
     }
 }

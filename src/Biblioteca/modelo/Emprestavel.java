@@ -1,5 +1,7 @@
 package Biblioteca.modelo;
 
+
+
 public interface Emprestavel {
-    int livrosEmprestados();
+    void emprestar();
 }

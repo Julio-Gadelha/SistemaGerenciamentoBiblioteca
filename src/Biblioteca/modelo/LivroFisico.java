@@ -1,17 +1,34 @@
 package Biblioteca.modelo;
 
-public class LivroFisico extends Livro {
-    private static final int ExemplaresDisoponiveis = 4;
+public class LivroFisico extends Livro implements Emprestavel {
+    private int exemplaresDisponiveis;
 
-    public LivroFisico(String titulo, String autor, String anoPublicacao) {
-        super(titulo, autor, anoPublicacao);
+    public LivroFisico(String titulo, String autor, String anoPublicacao, Genero genero, int exemplaresDisponiveis) {
+        super(titulo, autor, anoPublicacao, genero);
+        this.exemplaresDisponiveis = exemplaresDisponiveis;
     }
 
-    public int livrosEmprestados() {
-        int livrosDisponiveis =  ExemplaresDisoponiveis- livrosEmprestados() ;
-        if ( livrosDisponiveis == 0){
-            System.out.println("Livros indisponiveis");
+    @Override
+    public double totalReserva() {
+        return TAXA_RESERVA;
+    }
+
+    @Override
+    public boolean estaDisponivel() {
+        return exemplaresDisponiveis > 0;
+    }
+
+    @Override
+    public void emprestar() {
+        if (exemplaresDisponiveis > 0) {
+            exemplaresDisponiveis--;
+            System.out.println("Livro emprestado com sucesso!");
+        } else {
+            System.out.println("Não há exemplares disponíveis.");
         }
-        return Integer.parseInt("Livros disponisveis : " + livrosDisponiveis);
+    }
+
+    public int getExemplaresDisponiveis() {
+        return exemplaresDisponiveis;
     }
 }
