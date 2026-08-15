@@ -12,7 +12,7 @@ Projeto desenvolvido para praticar e aplicar conceitos fundamentais de **Program
 - Consulta de disponibilidade por título
 - Contagem automática do total de livros no sistema
 
-s** | `ArrayList<Livro>` para armazenar o acervo, aproveitando o polimorfismo para guardar tipos diferentes na mesma lista |
+
 
 ## 🗂️ Estrutura do projeto
 
@@ -28,14 +28,6 @@ Biblioteca/
 │   └── Biblioteca.java     
 └── Main.java                
 ```
-
-## ▶️ Como executar
-
-```bash
-javac Biblioteca/modelo/*.java Biblioteca/Sistema/*.java Biblioteca/Main.java
-java Biblioteca.Main
-```
-
 
 
 ## 🛠️ Tecnologias
